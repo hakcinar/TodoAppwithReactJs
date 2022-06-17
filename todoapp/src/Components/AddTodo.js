@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-
+import "./AddTodo.css";
 const AddTodo = () => {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const todoHandler = (e) => {
     setTodo(e.target.value);
-    console.log(todo)
+    console.log(todo);
   };
   useEffect(() => {
     if (localStorage.getItem("todos")) {
@@ -17,14 +17,14 @@ const AddTodo = () => {
     e.preventDefault();
     if (todo !== "") {
       console.log("entere basıldı");
-      setTodos([...todos,todo]);
-      localStorage.setItem("todos", JSON.stringify([...todos,todo]));
+      setTodos([...todos, todo]);
+      localStorage.setItem("todos", JSON.stringify([...todos, todo]));
       setTodo("");
     }
   };
   return (
     <div>
-      <form onSubmit={todoSubmit}>
+      <form className="add_form" onSubmit={todoSubmit}>
         <input
           type="text"
           placeholder="Yapılacak bir iş girin"
@@ -33,11 +33,13 @@ const AddTodo = () => {
         ></input>
         <button type="submit">Todo Ekle</button>
       </form>
-      <div>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
-        ))}
-      </div>
+      {todos.length > 0 && (
+        <div className="show_todos">
+          {todos.map((todo, index) => (
+            <li key={index}>{todo}</li>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

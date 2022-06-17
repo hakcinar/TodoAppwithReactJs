@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import users from "../users.json";
+import './Login.css'
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +17,8 @@ const Login = () => {
   };
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      <form className="login_form" onSubmit={submitHandler}>
+        <span>Giriş Yapın</span>
         <input
           value={username}
           onChange={(event) => setUsername(event.target.value)}
