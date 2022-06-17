@@ -15,7 +15,7 @@ const AddTodo = () => {
   }, []);
   const todoSubmit = (e) => {
     e.preventDefault();
-    if (todo !== "") {
+    if (todo.text !== "") {
       console.log("entere basıldı");
       setTodos([...todos, todo]);
       localStorage.setItem("todos", JSON.stringify([...todos, todo]));
@@ -32,7 +32,7 @@ const AddTodo = () => {
           onChange={todoHandler}
           value={todo.text}
         ></input>
-        <button type="submit">Todo Ekle</button>
+        <button type="submit" disabled={!todo.text}>Todo Ekle</button>
       </form>
       {todos.length > 0 && (
         <div className="show_todos">

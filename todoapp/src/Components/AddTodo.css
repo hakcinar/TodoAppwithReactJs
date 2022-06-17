@@ -1,24 +1,31 @@
 .add_form input {
   border-radius: 5px;
-  padding: 10px;
+  padding: 15px;
   width: 200px;
   margin-bottom: 15px;
   font-size: 14px;
   margin-right: 25px;
+  outline: none;
+  border: none;
+  font-weight: bold;
 }
 .add_form button {
-  padding: 10px;
-  border-radius: 5px;
-  background: #65737e;
-  color: black;
+  padding: 16px;
+  border-radius: 14px;
+  background:#065d9b;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 .show_todos ul {
   list-style-type: none;
 }
 .show_todos li {
   background-color: wheat;
-  padding: 10px 25px;
-  border-radius: 5px;
+  padding: 15px 25px;
+  border-radius: 14px;
   margin-bottom: 5px;
   font-size: 18px;
   font-weight: bold;
