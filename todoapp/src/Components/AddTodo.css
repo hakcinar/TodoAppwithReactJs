@@ -1,23 +1,32 @@
-
-.add_form input{
-    border-radius: 5px;
-    height: 30px;
-    padding: 5px;
-    width: 200px;
-    margin-bottom: 15px;
-    font-size: 14px; 
-    margin-right: 10px;
+.add_form input {
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  margin-right: 25px;
 }
-.add_form button{
-    height: 30px;
-    padding: 5px;
-    border-radius: 5px;
-    background:#65737e;
-    color: black;
+.add_form button {
+  padding: 10px;
+  border-radius: 5px;
+  background: #65737e;
+  color: black;
 }
-.show_todos{
-    background-color: wheat;
-    padding: 20px;
-    list-style-type: none;
-    border-radius: 5px;
+.show_todos ul {
+  list-style-type: none;
+}
+.show_todos li {
+  background-color: wheat;
+  padding: 10px 25px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.show_todos li input{
+    font-size: 18px;
+    margin-top: 4px;
 }

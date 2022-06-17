@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./AddTodo.css";
 const AddTodo = () => {
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState({});
   const [todos, setTodos] = useState([]);
   const todoHandler = (e) => {
-    setTodo(e.target.value);
+    setTodo({ text: e.target.value, isChecked: false });
     console.log(todo);
   };
   useEffect(() => {
@@ -20,6 +20,7 @@ const AddTodo = () => {
       setTodos([...todos, todo]);
       localStorage.setItem("todos", JSON.stringify([...todos, todo]));
       setTodo("");
+      e.target.reset();
     }
   };
   return (
@@ -29,14 +30,20 @@ const AddTodo = () => {
           type="text"
           placeholder="Yapılacak bir iş girin"
           onChange={todoHandler}
-          value={todo}
+          value={todo.text}
         ></input>
         <button type="submit">Todo Ekle</button>
       </form>
       {todos.length > 0 && (
         <div className="show_todos">
           {todos.map((todo, index) => (
-            <li key={index}>{todo}</li>
+            <ul>
+              <li key={index}>
+                {todo.text}
+                <input type="checkbox"></input>
+                {todo.isChecked && <span>Tamamlandı</span>}
+              </li>
+            </ul>
           ))}
         </div>
       )}
