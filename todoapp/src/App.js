@@ -1,8 +1,8 @@
 import Login from "./Components/Login";
 import { Routes, Route } from "react-router-dom";
-import TodoMain from "./Components/TodoMain";
 import './App.css'
 import Header from "./Components/Header";
+import ShowTodos from "./Components/ShowTodos";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="todomain" element={<TodoMain />} />
+        <Route path="/ShowTodos" element={<ShowTodos />} />
       </Routes>
     </div>
   );

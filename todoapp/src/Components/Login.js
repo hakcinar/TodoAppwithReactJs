@@ -12,7 +12,7 @@ const Login = () => {
       (user) => user.username === username && user.password === password
     );
     if (user) {
-      navigate("./TodoMain", { replace: true });
+      navigate("./ShowTodos", { replace: true });
     }
   };
   return (

@@ -1,53 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./AddTodo.css";
-const AddTodo = () => {
-  const [todo, setTodo] = useState({});
-  const [todos, setTodos] = useState([]);
-  const todoHandler = (e) => {
-    setTodo({ text: e.target.value, isChecked: false });
-    console.log(todo);
-  };
+const AddTodo = (props) => {
+  const [input, setInput] = useState("");
+  const inputRef = useRef(null);
   useEffect(() => {
-    if (localStorage.getItem("todos")) {
-      const storedTodos = JSON.parse(localStorage.getItem("todos"));
-      setTodos(storedTodos);
-    }
-  }, []);
+    inputRef.current.focus();
+  });
+  const todoHandler = (e) => {
+    setInput(e.target.value);
+  };
   const todoSubmit = (e) => {
     e.preventDefault();
-    if (todo.text !== "") {
-      console.log("entere basıldı");
-      setTodos([...todos, todo]);
-      localStorage.setItem("todos", JSON.stringify([...todos, todo]));
-      setTodo("");
-      e.target.reset();
-    }
+
+    props.onSubmit({
+      id: Math.floor(Math.random() * 10000),
+      text: input,
+    });
+    setInput(" ");
   };
   return (
-    <div>
-      <form className="add_form" onSubmit={todoSubmit}>
-        <input
-          type="text"
-          placeholder="Yapılacak bir iş girin"
-          onChange={todoHandler}
-          value={todo.text}
-        ></input>
-        <button type="submit" disabled={!todo.text}>Todo Ekle</button>
-      </form>
-      {todos.length > 0 && (
-        <div className="show_todos">
-          {todos.map((todo, index) => (
-            <ul>
-              <li key={index}>
-                {todo.text}
-                <input type="checkbox"></input>
-                {todo.isChecked && <span>Tamamlandı</span>}
-              </li>
-            </ul>
-          ))}
-        </div>
-      )}
-    </div>
+    <form className="add_form" onSubmit={todoSubmit}>
+      <input
+        type="text"
+        placeholder="Yapılacak bir iş girin"
+        onChange={todoHandler}
+        value={input}
+        ref={inputRef}
+      ></input>
+      <button type="submit" disabled={!input}>
+        Todo Ekle
+      </button>
+    </form>
   );
 };
 
